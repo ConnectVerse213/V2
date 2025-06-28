@@ -71,6 +71,7 @@ import backgroundVideo from '../assets/images/eventBackgroundVideo.mp4'
 import Badge from 'react-bootstrap/Badge';
 import EventComponent from './EventComponent';
 import MoviesComponent from './MoviesComponent';
+import Carousel from './Carousal';
 
 const buttons = [
   { id: 1, label: 'Movies', icon: null },
@@ -793,28 +794,14 @@ function Home2() {
           dashboardButtonStyle="outlined" 
         />
     
-      <br></br>  <br></br>
+      <br></br>  <br></br> <br></br>  <br></br> <br></br>  <br></br>
+      <Carousel/>
        <div className="web3-container">
 
       {/* Main Content */}
       <div className="web3-content">
         {/* Coin Balance Card */}
-        <div className="web3-coin-card">
-          <div className="coin-shine-container">
-            <img src={coinImage} alt="Coin" className="coin-image" />
-          </div>
-          <div className="coin-balance">
-            <CountUp start={coins-100} end={coins} className="coin-count" />
-            <span className="coin-label">COINS</span>
-          </div>
-          <button 
-            className="web3-button leaderboard-button"
-            onClick={getLeaderboard}
-          >
-            <LeaderboardIcon className="button-icon" />
-            Leaderboard
-          </button>
-        </div>
+        
 
         {/* Category Selector */}
         <div className="category-selector">

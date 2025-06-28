@@ -206,9 +206,21 @@ function ResponsiveAppBar({homeButtonStyle,earnButtonStyle,createButtonStyle,das
 
 
   return (
-    <AppBar position="static" style={{backgroundColor:'black',color:'#1876d1',position:'fixed',top:'0',zIndex:'99999999999999999999999999999999999999'}}>
+    <AppBar 
+  position="static" 
+  style={{
+    backgroundColor: 'black',
+    color: '#1876d1',
+    position: 'fixed',
+    top: '0',
+    zIndex: '99999999999999999999999999999999999999',
+   
+  }}
+>
+
       <br></br>
-      <Container maxWidth="xl" style={{backgroundColor:'black',background: 'transparent', boxShadow: '0 8px 32px 0 rgba(74, 34, 148, 0.5)', backdropFilter: 'blur(17.5px)', WebkitBackdropFilter: 'blur(17.5px)', borderRadius: '20px' , border: '0.5px solid rgba(255, 255, 255,0.5)'}}>
+      <Container maxWidth="xl" style={{backgroundColor:'black',background: 'transparent', boxShadow: '0 8px 32px 0 rgba(74, 34, 148, 0.5)', backdropFilter: 'blur(17.5px)', WebkitBackdropFilter: 'blur(17.5px)', borderRadius: '20px' , border: '0.5px solid rgba(255, 255, 255,0.5)',borderTop:'none',borderRight:'none',borderLeft:'none'}}>
+     
         <Toolbar disableGutters>
          
           <Typography

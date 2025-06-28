@@ -48,6 +48,8 @@ import SendIcon from '@mui/icons-material/Send';
 import dayjs from "dayjs";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PaidIcon from '@mui/icons-material/Paid';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import coinImage from '../assets/images/coinImg.png'
 
 // import { signInWithGoogle } from "../firebase-config";
 const usersCollectionRef1 = collection(db, "user");
@@ -63,10 +65,43 @@ function Home2() {
     const [randomNumber, setRandomNumber] = useState('');
     const [showQR, setShowQR] = useState(false);
      const [showCommentsDiv,setShowCommentsDiv]=useState([])
-            
+     const [leaderboardArray,setLeaderboardArray]=useState([])
+     const [showLeaderboardDiv,setShowLeaderboardDiv]=useState(false)
             const [makeComment,setMakeComment]=useState('')
             const [comments,setComments]=useState([])
             const [event_id,setEvent_id]=useState('')
+
+            const  getLeaderboard=async ()=>{
+
+              try{
+              
+                          const data = await getDocs(usersCollectionRef1);
+                                                        
+                             let usersTemp=await data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+                   
+                             let filteredArray=usersTemp.filter(obj => obj.ProfileImage!=null && obj.UserName!=null)
+              
+                           console.log(filteredArray)
+                           filteredArray.sort((a, b) => b.Coins - a.Coins);
+        
+                           setLeaderboardArray(filteredArray)
+        
+                           setShowLeaderboardDiv(true)
+                           
+              
+                          
+                         
+                                         
+                      }
+                      catch{
+              
+                          notifyCustom("Error loading leaderboard","error")
+                          setInterval(()=>{
+                              window.location.href="/home"
+                            },3000)
+                      }
+            
+            }
     const qrRef = useRef();
   
     const generateNumber = async(id) => {
@@ -432,7 +467,22 @@ function Home2() {
            <br></br> <br></br>  <br></br> <br></br>  <br></br> <br></br>
 
 
-  
+           <div className="web3-coin-card">
+          <div className="coin-shine-container">
+            <img src={coinImage} alt="Coin" className="coin-image" />
+          </div>
+          <div className="coin-balance">
+            <CountUp start={coins-100} end={coins} className="coin-count" />
+            <span className="coin-label">COINS</span>
+          </div>
+          <button 
+            className="web3-button leaderboard-button"
+            onClick={getLeaderboard}
+          >
+            <LeaderboardIcon className="button-icon" />
+            Leaderboard
+          </button>
+        </div>
 
 
   
@@ -788,6 +838,45 @@ function Home2() {
     </div>
   </div>
 )}
+
+{showLeaderboardDiv && (
+          <div className="web3-modal">
+            <div className="modal-header">
+              <h3>Leaderboard</h3>
+              <button className="close-button" onClick={() => setShowLeaderboardDiv(false)}>
+                <CancelIcon />
+              </button>
+            </div>
+            <div className="leaderboard-list">
+              {leaderboardArray.slice(0, 5).map((x, index) => (
+                <div key={index} className="leaderboard-item">
+                  <div className="user-info">
+                    <span className="rank">{index + 1}.</span>
+                    <img src={x.ProfileImage} alt="profile" className="user-avatar" />
+                    <span className="username">{x.UserName.length < 6 ? x.UserName : `${x.UserName.slice(0, 6)}...`}</span>
+                  </div>
+                  <div className="coin-info">
+                    <img src={coinImg} alt="coin" className="coin-icon" />
+                    <span className="coin-amount">{x.Coins}</span>
+                  </div>
+                </div>
+              ))}
+              {leaderboardArray.length > 0 && (
+                <div className="leaderboard-item current-user">
+                  <div className="user-info">
+                    <span className="rank">{leaderboardArray.findIndex(obj => obj.Email === localStorage.getItem('email')) + 1}.</span>
+                    <img src={leaderboardArray.filter(x => x.Email == localStorage.getItem('email'))[0].ProfileImage} alt="profile" className="user-avatar" />
+                    <span className="username">You</span>
+                  </div>
+                  <div className="coin-info">
+                    <img src={coinImg} alt="coin" className="coin-icon" />
+                    <span className="coin-amount">{leaderboardArray.filter(x => x.Email == localStorage.getItem('email'))[0].Coins}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
     </div>
   )
