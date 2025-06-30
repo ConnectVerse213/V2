@@ -114,9 +114,9 @@ function EventComponent({allEvents,allUsersArray,search,setEvent_id,getComments,
                          
                          <div style={{display:'flex',gap:'10px' }}>
                          
-                         {allUsersArray.length!=0 && allUsersArray.filter(obj=>obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage).length!=0 && allUsersArray.filter(obj=>obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage)[0].ProfileImage ? <img onClick={()=>{
-               window.location.href=`/channel/${allUsersArray.filter(obj=>obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage)[0].UserName}`
-             }} src={allUsersArray.filter(obj=>obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage)[0].ProfileImage} style={{width:'2em',height:'2em',borderRadius:'50%',objectFit:'cover',border:'1px solid white'}}></img> :<img style={{width:'2.8em',height:'2.8em',borderRadius:'50%',objectFit:'cover'}} src='https://i.pinimg.com/564x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg'></img> }  
+                          {allUsersArray.length!=0 && allUsersArray.filter(obj=>obj.EventsCreated!=null && obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage).length!=0 && allUsersArray.filter(obj=>obj.EventsCreated!=null && obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage)[0].ProfileImage ? <img onClick={()=>{
+                window.location.href=`/channel/${allUsersArray.filter(obj=>obj.EventsCreated!=null && obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage)[0].UserName}`
+             }} src={allUsersArray.filter(obj=>obj.EventsCreated!=null && obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage)[0].ProfileImage} style={{width:'2em',height:'2em',borderRadius:'50%',objectFit:'cover',border:'1px solid white'}}></img> :<img style={{width:'2.8em',height:'2.8em',borderRadius:'50%',objectFit:'cover'}} src='https://i.pinimg.com/564x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg'></img> }  
                        
                        <div style={{display:'flex',flexDirection:'column',alignItems:'flex-start',gap:'0px'}}>
                          
@@ -126,10 +126,10 @@ function EventComponent({allEvents,allUsersArray,search,setEvent_id,getComments,
            
                          <l>
                            
-                           {allUsersArray.length!=0 && allUsersArray.filter(obj=>obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage).length!=0 && allUsersArray.filter(obj=>obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage)[0].ProfileImage ? <Typography gutterBottom sx={{  fontSize: 14 }} style={{color:'white', textAlign: 'center',display:'flex',alignItems:'center',justifyContent:'center',gap:'3px'}}><l style={{fontSize:'15px',color:'rgb(200,200,200'}}>{allUsersArray.filter(obj=>obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage)[0].UserName}   </l></Typography>  : <Typography gutterBottom sx={{  fontSize: 14 }} style={{color:'white', textAlign: 'center',display:'flex',alignItems:'center',justifyContent:'center',gap:'3px'}}><l style={{fontSize:'15px',color:'rgb(200,200,200'}}>Anonymous User </l></Typography>}
+                           {allUsersArray.length!=0 && allUsersArray.filter(obj=>obj.EventsCreated!=null && obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage).length!=0 && allUsersArray.filter(obj=>obj.EventsCreated!=null && obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage)[0].ProfileImage ? <Typography gutterBottom sx={{  fontSize: 14 }} style={{color:'white', textAlign: 'center',display:'flex',alignItems:'center',justifyContent:'center',gap:'3px'}}><l style={{fontSize:'15px',color:'rgb(200,200,200'}}>{allUsersArray.filter(obj=>obj.EventsCreated!=null && obj.EventsCreated.includes(x.id) && obj.UserName && obj.ProfileImage)[0].UserName}   </l></Typography>  : <Typography gutterBottom sx={{  fontSize: 14 }} style={{color:'white', textAlign: 'center',display:'flex',alignItems:'center',justifyContent:'center',gap:'3px'}}><l style={{fontSize:'15px',color:'rgb(200,200,200'}}>Anonymous User </l></Typography>}
                          
                          </l>
-                         <Typography gutterBottom sx={{  fontSize: 14 }} style={{color:'white', textAlign: 'center',display:'flex',alignItems:'center',justifyContent:'center',gap:'3px'}}><l style={{fontSize:'14px',color:'rgb(200,200,200'}}>{x.RegistrationsCount} Registrations .   {x.Timestamp && dayjs(x.Timestamp).fromNow() }</l></Typography>
+                         <Typography gutterBottom sx={{  fontSize: 14 }} style={{color:'white', textAlign: 'center',display:'flex',alignItems:'center',justifyContent:'center',gap:'3px'}}><l style={{fontSize:'14px',color:'rgb(200,200,200'}}>{x.RegistrationsCount} Bookings .   {x.Timestamp && dayjs(x.Timestamp).fromNow() }</l></Typography>
            
                        
                          
@@ -197,25 +197,12 @@ function EventComponent({allEvents,allUsersArray,search,setEvent_id,getComments,
            
                     
                          
-                     <Typography gutterBottom sx={{  fontSize: 14 }} style={{position:'absolute',left:'20%',bottom:'10%',color:'white', textAlign: 'center',display:'flex',alignItems:'center',justifyContent:'center',gap:'3px'}}>
-                       
-                       <div style={{display:'flex',alignItems:'flex-start',gap:'5px'}}>
-                     <CalendarMonthIcon fontSize='small'/><l>{x.StartDateTime && formatDate(x.StartDateTime.substring(0,10))}</l>
-                     </div>
-           
-                     &nbsp;&nbsp;{!x.Type && <> <LocationPinIcon fontSize='small'/>
-                        <l>{ x.Address.slice(x.Address.lastIndexOf(",") + 1).length>7 ? x.Address.slice(x.Address.lastIndexOf(",") + 1):x.Address.slice(x.Address.lastIndexOf(",") + 1) } </l> </>}
-           
-           
-                         {x.Type=="online" && <> <VideoCallIcon fontSize='small'/>
-                           <l>Online</l> </>}
-                   </Typography>
+                    
                    <br></br>
         
            
                      
            
-                   <br></br> <br></br>
                    <Button variant='outlined' onClick={()=>{
                     window.location.href=`event/${x.id}`
                    }} style={{backgroundColor:'rgb(236,16,52)',color:'white',borderRadius:'20px'}}>Book Tickets</Button>

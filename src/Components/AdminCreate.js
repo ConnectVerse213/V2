@@ -659,11 +659,13 @@ isOnline && <div class="location"  style={{ cursor:'pointer',background: "rgba(2
                }
                else
                {  
-                notify("Subscribe to Premium for paid events","dark","top-right","error")
+                // notify("Subscribe to Premium for paid events","dark","top-right","error")
 
-                setTimeout(()=>{
-                    window.location.href="/pricing"
-                },3000)
+                // setTimeout(()=>{
+                //     window.location.href="/pricing"
+                // },3000)
+
+                setPriceShowDiv(true)
 
                }
            
@@ -717,16 +719,16 @@ isOnline && <div class="location"  style={{ cursor:'pointer',background: "rgba(2
           
         </div>
       <br></br><br></br>
-        <button  className='button-85' style={{height:'2em',width:'100%'}} disabled={clicked} onClick={()=>{
+        <button  className='button-85' style={{height:'2em',width:'100%'}}  onClick={()=>{
 
-          setClicked(true)
+          setClicked(false)
           toast.dismiss()
             createUser()
 
             
 
         
-        }}>Create</button>
+        }}>Create New</button>
        
      
       

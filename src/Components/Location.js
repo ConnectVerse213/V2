@@ -82,41 +82,46 @@ const LocationPopup = () => {
 
     navigator.geolocation.getCurrentPosition(
       async (position) => {
-        try {
-          const { latitude, longitude } = position.coords;
+        window.location.href="/home2"
+        localStorage.setItem(
+              'userLocationData',
+              "USA"
+            );
+        // try {
+        //   const { latitude, longitude } = position.coords;
           
-          // Get detailed location information
-          const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&addressdetails=1&namedetails=1`
-          );
+        //   // Get detailed location information
+        //   const response = await fetch(
+        //     `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&addressdetails=1&namedetails=1`
+        //   );
           
-          if (!response.ok) throw new Error('Location fetch failed');
+        //   if (!response.ok) throw new Error('Location fetch failed');
           
-          const data = await response.json();
+        //   const data = await response.json();
           
-          if (!data.address) {
-            throw new Error('No address information found');
-          }
+        //   if (!data.address) {
+        //     throw new Error('No address information found');
+        //   }
           
-          // Extract city using our enhanced logic
-          const city = extractCity(data.address);
-          const fullLocation = data.display_name;
+        //   // Extract city using our enhanced logic
+        //   const city = extractCity(data.address);
+        //   const fullLocation = data.display_name;
 
-          if (!city) throw new Error('City information not found');
+        //   if (!city) throw new Error('City information not found');
 
-          // Save to localStorage
-          localStorage.setItem(
-            'userLocationData',
-            city
-          );
+        //   // Save to localStorage
+        //   localStorage.setItem(
+        //     'userLocationData',
+        //     city
+        //   );
           
-          setShowPopup(false);
-          window.location.href="/home"
-        } catch (err) {
-          setError('Failed to get location details: ' + err.message);
-        } finally {
-          setLoading(false);
-        }
+        //   setShowPopup(false);
+        //   window.location.href="/home"
+        // } catch (err) {
+        //   setError('Failed to get location details: ' + err.message);
+        // } finally {
+        //   setLoading(false);
+        // }
       },
       (err) => {
         setError('Error getting location: ' + (

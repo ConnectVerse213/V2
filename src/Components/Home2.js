@@ -74,9 +74,9 @@ import MoviesComponent from './MoviesComponent';
 import Carousel from './Carousal';
 
 const buttons = [
-  { id: 1, label: 'Movies', icon: null },
+  { id: 1, label: 'Concerts', icon: null },
   { id: 2, label: 'Standup', icon: null },
-  { id: 4, label: 'Concerts', icon: null},
+  { id: 4, label: 'Movies', icon: null},
   { id: 5, label: 'Sports', icon: null},
   { id: 3, label: '', icon: <CategoryIcon fontSize="large" /> },
 ];
@@ -578,6 +578,8 @@ function Home2() {
                     let eventsTemp=await data1.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
                     setAllEvents(eventsTemp)
 
+                    console.log("eventsTemp",eventsTemp)
+
                     console.log("gajupaddu",eventsTemp.length)
 
                     const newArray = [...eventsTemp]; 
@@ -832,7 +834,7 @@ function Home2() {
 
         {/* Content Sections */}
         <div className="content-sections">
-          {buttonHight === 1 && (
+          {buttonHight === 4 && (
             <MoviesComponent 
               allEvents={allMovies} 
               allUsersArray={allUsersArray} 
@@ -843,6 +845,20 @@ function Home2() {
               notifyClipboard={notifyClipboard} 
               formatDate={formatDate} 
               notifyCustom={notifyCustom}
+            />
+          )}
+          
+          {buttonHight === 1 && (
+            <EventComponent 
+              allEvents={allEvents} 
+              allUsersArray={allUsersArray} 
+              search={search}
+              event_id={event_id} 
+              setEvent_id={setEvent_id} 
+              getComments={getComments} 
+              notifyClipboard={notifyClipboard} 
+              formatDate={formatDate} 
+              Category={"Concert"}
             />
           )}
           
@@ -857,20 +873,6 @@ function Home2() {
               notifyClipboard={notifyClipboard} 
               formatDate={formatDate} 
               Category={"Standup"}
-            />
-          )}
-          
-          {buttonHight === 4 && (
-            <EventComponent 
-              allEvents={allEvents} 
-              allUsersArray={allUsersArray} 
-              search={search}
-              event_id={event_id} 
-              setEvent_id={setEvent_id} 
-              getComments={getComments} 
-              notifyClipboard={notifyClipboard} 
-              formatDate={formatDate} 
-              Category={"Concert"}
             />
           )}
         </div>

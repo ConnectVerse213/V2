@@ -385,7 +385,14 @@ function EventPage() {
        
         let usersTemp=await data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 
-       filteredArray=usersTemp.filter(obj=>obj.EventsCreated.includes(event_id))
+        try{
+          filteredArray=usersTemp.filter(obj=>obj.EventsCreated!=null && obj.EventsCreated.includes(event_id))
+        }
+        catch{
+          
+        }
+
+       
 
         setcreator(filteredArray)
         console.log("filteredArrayof users", filteredArray)

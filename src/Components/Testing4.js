@@ -550,6 +550,156 @@ const deleteEventsData=async()=>{
 
 }
 
+const addArtists=async()=>{
+
+  const artists = [
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Rapper. Lyricist. Still cleaning out my closet.",
+      Coins: 100,
+      Email: "eminem@musicmail.com",
+      UserName: "Eminem",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    },
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Singer. Dancing through pop beats. Future nostalgia forever.",
+      Coins: 100,
+      Email: "dualipa@musicmail.com",
+      UserName: "DuaLipa",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    },
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Making music from my bedroom. Whisper then scream.",
+      Coins: 100,
+      Email: "billieeilish@musicmail.com",
+      UserName: "BillieEilish",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    },
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Guitar, loops, and a ginger voice. Writing songs since forever.",
+      Coins: 100,
+      Email: "edsheeran@musicmail.com",
+      UserName: "EdSheeran",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    },
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Started from the bottom. Still here.",
+      Coins: 100,
+      Email: "drake@musicmail.com",
+      UserName: "Drake",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    },
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Writing stories in songs. Lover of cats and Easter eggs.",
+      Coins: 100,
+      Email: "taylorswift@musicmail.com",
+      UserName: "TaylorSwift",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    },
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Queen B. Living my best life on stage and off.",
+      Coins: 100,
+      Email: "beyonce@musicmail.com",
+      UserName: "Beyonce",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    },
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Barbz forever. Pink wigs, rap hits, and big vibes.",
+      Coins: 100,
+      Email: "nickiminaj@musicmail.com",
+      UserName: "NickiMinaj",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    },
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Poet with a mic. Speaking truth through rap.",
+      Coins: 100,
+      Email: "kendricklamar@musicmail.com",
+      UserName: "KendrickLamar",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    },
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Singing my heart out. Love and heartbreak, all in a song.",
+      Coins: 100,
+      Email: "adele@musicmail.com",
+      UserName: "Adele",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    },
+    {
+      EventsRegistered: [],
+      EventsCreated: [],
+      EventsApproved: [],
+      EventsAttended: [],
+      Bio: "Big Mike. Spitting bars and lifting voices.",
+      Coins: 100,
+      Email: "stormzy@musicmail.com",
+      UserName: "Stormzy",
+      ProfileImage: "",
+      WalletAddress: "0xF53a541148C46B6aB6A5131A44b0e624Fa9495b7"
+    }
+  ];
+  
+  
+  
+
+
+  await addDoc(collection(db, "user"), {  });
+  
+  for(let i=0;i<artists.length;i++)
+  {
+    await addDoc(collection(db, "user"), artists[i]);
+  }
+  
+}
+
 
 
   return (
@@ -602,6 +752,10 @@ const deleteEventsData=async()=>{
     <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
   <button>Share on LinkedIn</button>
 </a>
+<br></br>
+<button onClick={()=>{
+  addArtists()
+}}>Add Artists</button>
 
     </div>
 

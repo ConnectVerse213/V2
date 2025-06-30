@@ -630,7 +630,8 @@ const TokenInfoDashboard = () => {
         chatButtonStyle="contained" 
         dashboardButtonStyle="outlined"
       />
-      
+   
+   <br></br> <br></br> 
       <div style={containerStyle}>
         {loading && (
           <div style={loadingStyle}>
@@ -644,6 +645,7 @@ const TokenInfoDashboard = () => {
         {tokenData && (
           <>
             <div style={headerStyle}>
+          
               <div>
                 <div style={titleContainerStyle}>
                   <div>
