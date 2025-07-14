@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
    
-    <Nav style={{backgroundColor:'black',color:'#1876d1',position:'fixed',width:'100%',border:'0.5px solid grey',borderRadius:'30px',zIndex:999999999}}>
+    <Nav style={{backgroundColor:'black',color:'#1876d1',position:'fixed',width:'100%',border:'0.5px solid grey',zIndex:999999999}}>
       <Logo href="#"><img src={logo} style={{width:'4em'}}></img></Logo>
       <Hamburger onClick={() => setIsOpen(!isOpen)}>
         <span />
