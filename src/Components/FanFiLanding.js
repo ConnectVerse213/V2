@@ -1800,7 +1800,7 @@ const FanFiEnhanced = () => {
                 </div>
                 <h3>Telegram</h3>
                 <p>Follow us for the latest updates and announcements</p>
-                <a href="https;//t.me/befanfi" className="community-link">Join Now</a>
+                <a href="https://t.me/befanfi" className="community-link">Join Now</a>
               </CommunityCard>
 
              
